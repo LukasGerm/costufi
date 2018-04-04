@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Costufi</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="stylesheets/materialize.min.css"  media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+  <body>
+    <main>
+      <div class="background-img"></div>
+        <div class="container">
+          <div class="z-depth-2 white" style="display: inline-block; padding: 20px 50px 10px 50px; margin-top: 15%;">
+            <form class="col s12" action="/auth" method="post">
+              <div class="row">
+                <h4>Login</h4>
+                <div>
+                  <p><%= errorMsg %></p>
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="username" id="username" class="validate">
+                  <label for="username">Nutzername</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="password" name="password" id="password" class="validate">
+                  <label for="password">Passwort</label>
+                </div>
+              </div>
+              <div class="row">
+                <button class="left btn waves-effect waves-light indigo darken-2" type="submit" name="send">Login
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <p class="grey-text">Powered by <a href="https://precode.eu">precode.eu</a> | &copy; by <a href="https://precode.eu">precode.eu</a></p>
+          <p class="grey-text">Version <%= version %></p>
+        </div>
+    </main>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>
