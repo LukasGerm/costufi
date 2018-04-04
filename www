@@ -5,7 +5,7 @@
  */
 
 var app = require('./core/app');
-var debug = require('./core/node_modules/debug')('costufy:server');
+var debug = require('./core/node_modules/debug')('costufi:server');
 var http = require('http');
 
 /**
