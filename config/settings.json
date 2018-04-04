@@ -1,0 +1,11 @@
+{
+  "db" : {
+      "host" : "IP",
+      "user" : "DBUSER",
+      "password" : "DBPASSWORD",
+      "database" : "DATABASE"
+  },
+  "installed" : true,
+  "version" : "Beta 0.1.0",
+  "title" : "Costufi"
+}
