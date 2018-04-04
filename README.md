@@ -1,6 +1,9 @@
 ## Costufi
+### Description
+Costufi is a free, Open Source, node.js based application for user management especially for photographers.
+### Installation
 
-Costufi is a free, Open Source, node.js based application for user management
+### Thanks To
 ## Licence
 
 [GNU](https://github.com/PreCodeEU/costufi/master/LICENCE)
