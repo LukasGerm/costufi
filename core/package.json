@@ -8,8 +8,6 @@
   },
   "dependencies": {
     "async": "latest",
-    "babel-cli": "latest",
-    "babel-preset-es2015": "latest",
     "bcrypt": "1.0.3",
     "bcrypt-nodejs": "latest",
     "body-parser": "~1.18.2",
