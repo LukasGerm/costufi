@@ -12,6 +12,12 @@ I look forward to create an installer, that you don't have to do this.
 3. Upload the `costufi.sql` via phpmyadmin or something
 4. Run `node www`
 
+Standard Login:
+Username: admin1
+password: test123!
+
+You can change it in the adminpanel
+
 Full documentation will be available [here](https://costufi.de/docs)
 ### Thanks To
 Julian Missling (Logo)
