@@ -14,7 +14,7 @@ I look forward to create an installer, that you don't have to do this.
 
 Full documentation will be available [here](https://costufi.de/docs)
 ### Thanks To
-[Julian Missling]() (Logo)
+Julian Missling (Logo)
 [Lukas Germerott](https://precode.eu) (Code)
 ## Licence
 
