@@ -5,12 +5,12 @@ Costufi is a free, Open Source, node.js based application for user management es
 You can easily creat assignments and upload pictures for your customers, so they can look at it and download it.
 At this time, it's only in german, but in one of the next updates I will create an english-language-support.
 ### Installation
+Unstable Version
 I look forward to create an installer, that you don't have to do this.
 
-<<<<<<< HEAD
+
 Costufi is a free, Open Source, node.js based application for user management
-This is a empty Readme
-=======
+
 1. Extract the archive and go to the `core` folder and run `npm install`.
 2. After this you have to change you database settings in `/config/settings.json`.
 3. Upload the `costufi.sql` via phpmyadmin or something
