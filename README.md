@@ -27,7 +27,6 @@ Full documentation will be available [here](https://costufi.de/docs)
 Julian Missling (Logo)
 
 [Lukas Germerott](https://precode.eu) (Code)
->>>>>>> master
 ## Licence
 
 [GNU](https://github.com/PreCodeEU/costufi/master/LICENCE)
