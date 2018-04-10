@@ -18,7 +18,7 @@ password: test123!
 
 You can change it in the adminpanel
 
-Full documentation will be available [here](https://costufi.de/docs)
+Full documentation is [here](https://github.com/precodeeu/costufi/wiki)
 ### Thanks To
 Julian Missling (Logo)
 
