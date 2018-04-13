@@ -23,6 +23,8 @@ Full documentation is [here](https://github.com/precodeeu/costufi/wiki)
 Julian Missling (Logo)
 
 [Lukas Germerott](https://precode.eu) (Code)
+
+[Lukas Zorn](https://lukaszorn.de) (Advice, Helpfulness)
 ## Licence
 
 [GNU](https://github.com/PreCodeEU/costufi/master/LICENCE)
