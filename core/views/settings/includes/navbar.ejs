@@ -1,0 +1,22 @@
+<header>
+    <nav class="indigo darken-2 nav">
+        <div class="container">
+            <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
+                <a href="#" data-activates="navbar" class="button-collapse white-text right"><i class="material-icons">home</i></a>
+            </div>
+
+
+        </div>
+    </nav>
+    <ul id="navbar" class="side-nav fixed">
+        <% if (user.isAdmin){ %>
+        <li><a href="/admin"><%= lang.home %></a></li>
+        <% } else { %>
+        <li><a href="/"><%= lang.home %></a></li>
+        <% } %>
+        <li><a href="/logout"><%= lang.logout %></a></li>
+        <br>
+        <li><a href="/settings?site=personal"><%= lang.personal %></a></li>
+
+    </ul>
+</header>

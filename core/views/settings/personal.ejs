@@ -1,1 +1,56 @@
-Hallo I bims
+<html>
+    <head>
+        <%- include includes/head.ejs %>
+    </head>
+    <body>
+
+        <%- include includes/navbar.ejs %>
+
+
+        <main>
+            <h4><%= lang.change_password %></h4>
+            <form id="changePw" onsubmit="return changePassword(this, '/settings/changepw')">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="password" id="newPassword" name="newPassword" class="validate">
+                        <label for="newPassword"><%= lang.newPassword %></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="password" id="repeatPassword" name="repeatPassword" class="validate">
+                        <label for="repeatPassword"><%= lang.repeatPassword %></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-blue indigo darken-2" type="submit" name="changePwBtn"><%= lang.sendUser %></button>
+                </div>
+
+            </form>
+
+            <h4><%= lang.change_lang %></h4>
+            <form action="#" id="changeLanguage" method="post">
+                <div class="row">
+                    <div class="col s6 input-field">
+                        <select name="select" id="select">
+                            <option value="" disabled selected><%= lang.select_lang %></option>
+                            <option value="ger"><%= lang.german %></option>
+                            <option value="eng"><%= lang.english %></option>
+                        </select>
+                        <label><%= lang.select_lang %></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-blue indigo darken-2" type="submit"><%= lang.change %></button>
+                </div>
+
+            </form>
+        </main>
+
+        <%- include includes/footer.ejs %>
+    </body>
+
+
+</html>
+
+

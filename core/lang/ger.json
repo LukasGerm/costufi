@@ -1,0 +1,55 @@
+{
+  "home" : "Home",
+  "admin" : "Admin",
+  "logout" : "Logout",
+  "settings" : "Einstellungen",
+  "userPerspective": "Nutzeransicht",
+  "customer_data" : "Kundendaten",
+  "customer_id" : "Kundennummer",
+  "customer_name" : "Name",
+  "customer_email" : "E-Mail Adresse",
+  "job_data" : "Auftragsdaten",
+
+  "admin_welcome" : "Willkommen Admin",
+  "create_user" : "Nutzererstellung",
+  "manage_user" : "Nutzerdatenverwaltung",
+  "first_name" : "Vorname",
+  "last_name" : "Zuname",
+  "username" : "Nutzername",
+  "password_login" : "Passwort",
+  "password" : "Passwort(Mindestens 8 Zeichen)",
+  "isAdmin" : "Soll dieser Benutzer über Administratorrechte verfügen?",
+  "sendUser" : "Erstellen",
+  "data_error1" : "Geben Sie eine richtige E-Mail Adresse an",
+
+  "userDontExist" : "Dieser Benutzer exestiert nicht!",
+  "wrongDataType" : "Falscher Dateityp, dies ist leider nicht möglich!",
+  "fillAllFields" : "Es müssen alle Felder ausgefüllt werden",
+
+  "tooManyTries" : "Du hast dich zo oft falsch angemeldet.",
+  "UorPwrong" : "Nutzername oder Passwort falsch!",
+  "notAllowed" : "Dieser Bereich ist für dich nicht freigegeben",
+  "personal" : "Persönliche Einstellungen",
+
+  "create_assignment": "Auftrag erstellen",
+  "job_name" : "Name des Auftrages",
+  "add_files" : "Füge Dateien hinzu",
+  "choose" : "Auswählen",
+  "placeholder2" : "Bilder(Nur PNG, SVG, JPG, GIF, MP4)",
+  "bill" : "Rechnung",
+  "placeholder3" : "Auswählen (Nur PDF)",
+  "donot" : "Abbrechen",
+
+  "change_password": "Passwort Ändern",
+  "change_lang" : "Sprache Ändern",
+  "reset": "Zurücksetzen",
+
+  "newPassword": "Neues Passwort",
+  "repeatPassword" : "Neues Passwort wiederholen",
+
+  "select_lang": "Sprache auswählen",
+  "german" : "Deutsch",
+  "english" : "Englisch",
+  "change" : "Ändern"
+
+}

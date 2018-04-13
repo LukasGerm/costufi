@@ -12,14 +12,14 @@
             <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/admin">Home</a></li>
-                    <!-- <li><a href="/settings">Einstellungen</a></li> -->
+                    <li><a href="/settings">Einstellungen</a></li>
                     <li><a href="/files/<%= user.username %>">Nutzeransicht</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="/files/<%= user.username %>" class="black-text">Home</a></li>
-                <!--<li><a href="/settings" class="black-text">Einstellungen</a></li> -->
+                <li><a href="/settings" class="black-text">Einstellungen</a></li>
                 <li><a href="/files/<%= user.username %>" class="black-text">Nutzeransicht</a></li>
                 <li><a href="/logout" class="black-text">Logout</a></li>
             </ul>
@@ -32,18 +32,18 @@
             <h2><%= message %></h2>
         </div>
         <% } else {%>
-        <h3>Passwort zurücksetzen</h3>
-        <form action="" id="changePw">
+        <h3><%= lang.change_password %></h3>
+        <form id="changePw" onsubmit="return changePassword(this, '/admin/changepw')">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <input type="password" name="newPassword" id="newPassword" class="validate">
-                    <label for="newPassword">Neues Passwort</label>
+                    <label for="newPassword"><%= lang.newPassword %></label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6">
                     <input type="password" name="repeatPassword" id="repeatPassword" class="validate">
-                    <label for="repeatPassword">Neues Passwort wiederholen</label>
+                    <label for="repeatPassword"><%= lang.repeatPassword %></label>
                 </div>
             </div>
             <div>
@@ -52,7 +52,7 @@
             <div class="row">
 
                 <button type="submit" class="btn waves-effect waves-light indigo darken-2">
-                    Zurücksetzen
+                    <%= lang.reset %>
                 </button>
             </div>
 

@@ -16,7 +16,6 @@ const db = mysql.createConnection({
   database: settings.db.database
 });
 
-//todo make error site sexy
 
 const app = express();
 

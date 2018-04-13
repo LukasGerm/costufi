@@ -1,0 +1,55 @@
+{
+  "home" : "Home",
+  "admin" : "Admin",
+  "logout" : "Logout",
+  "settings" : "Settings",
+  "userPerspective": "User's Perspective",
+  "customer_data" : "User Data",
+  "customer_id" : "User's ID",
+  "customer_name" : "User's Name",
+  "customer_email" : "E-Mail Address",
+  "job_data" : "Job Data",
+
+  "admin_welcome" : "Welcome, Admin",
+  "create_user" : "Create User",
+  "manage_user" : "Manage User",
+  "first_name" : "First Name",
+  "last_name" : "Last Name",
+  "username" : "Username",
+  "password_login" : "Password",
+  "password" : "Password (must be at least 8 characters long)",
+  "isAdmin" : "Should this user have admin privileges?",
+  "sendUser" : "Create",
+  "data_error1" : "Please use a valid e-mail address",
+
+  "userDontExist" : "The user does not exist!",
+  "wrongDataType" : "Wrong datatype, the action is not possible!",
+  "fillAllFields" : "You must fill in all of the fields!",
+
+  "tooManyTries" : "Login failed too many times!",
+  "UorPwrong" : "Wrong username or password!",
+  "notAllowed" : "You are not allowed to use this setting",
+  "personal" : "Personal Settings",
+
+  "create_assignment": "Create Job",
+  "job_name" : "Job name",
+  "add_files" : "Add files",
+  "choose" : "Choose",
+  "placeholder2" : "Pictures(Only PNG, SVG, JPG, GIF, MP4)",
+  "bill" : "Bill",
+  "placeholder3" : "Choose Bill (Only PDF)",
+  "donot" : "Cancel",
+
+  "change_password" : "Change password",
+  "change_lang": "Change language",
+  "reset": "Reset",
+
+  "newPassword": "New password",
+  "repeatPassword" : "Repeat the new password",
+
+  "select_lang" : "Select language",
+  "german": "German",
+  "english": "English",
+  "change": "Change"
+
+}

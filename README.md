@@ -29,6 +29,8 @@ Julian Missling (Logo)
 [Lukas Germerott](https://precode.eu) (Code)
 
 [Lukas Zorn](https://lukaszorn.de) (Advice, Helpfulness)
+
+Niklas Klose (Translations)
 ## Licence
 
 [GNU](https://github.com/PreCodeEU/costufi/master/LICENCE)

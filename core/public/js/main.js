@@ -1,6 +1,28 @@
 //todo Erst location dann toast
 let modalOpened = false;
 let imageCount = 0;
+$('#changeLanguage').submit(e => {
+   e.preventDefault();
+   const postData = {
+       lang : document.getElementById('select').value
+   };
+    console.log(postData);
+    $.post({
+      url: "/settings/changelang",
+      data: postData,
+      success(response){
+          if(response){
+              Materialize.toast(`Language is now changed, you will be logged out in a moment.`, 3000, "green");
+              setTimeout(function(){
+                  window.location.href = "/logout";
+              }, 3000);
+          }
+          else{
+              Materialize.toast(`Server error`, 3000, "red");
+          }
+      }
+   });
+});
 $("#createUserForm").submit(function(e){
     e.preventDefault();
 
@@ -22,18 +44,18 @@ $("#createUserForm").submit(function(e){
 
             switch(response) {
                 case "checkData":
-                    Materialize.toast(`Fehlgeschlagen! Überprüfe deine Daten!`, 3000, "red");
+                    Materialize.toast(`Error! Please check your information`, 3000, "red");
                     break;
                 case "success":
 
                     window.location.href ="/admin";
-                    Materialize.toast(`Das erstellen des Benutzers: ${$("#username").val()} war erfolgreich.`, 3000, "green");
+                    Materialize.toast(`Successfully created user: ${$("#username").val()}.`, 3000, "green");
                     break;
                 case "duplicate":
-                    Materialize.toast(`Fehlgeschlagen! Ein Duplikat liegt vor! Benutzername Email oder Kundennummer ist schon vorhanden.`, 3000, "red");
+                    Materialize.toast(`Error! Username, email or user id already taken.`, 3000, "red");
                     break;
                 default:
-                    Materialize.toast(`Serverfehler!`, 3000, "red");
+                    Materialize.toast(`Server error!`, 3000, "red");
                     break;
             }
 
@@ -72,9 +94,10 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
     $('.modal').modal();
     $('.button-collapse').sideNav();
+    $('select').material_select();
 });
 function deleteUser(e, uname){
-    let check = confirm("Wollen Sie den Benutzer wirklich löschen? (Alle Daten werden unwiederruflich gelöscht)");
+    let check = confirm("Do you really want to delete this user? (all data will permanently be deleted)");
     if(check){
         $.ajax({
             url: '/admin/deleteuser?user=' + uname,
@@ -82,14 +105,14 @@ function deleteUser(e, uname){
             success(response){
                 if(response){
                     e.parentNode.parentNode.remove();
-                    Materialize.toast(`Das Löschen des Benutzers: ${uname} war erfolgreich.`, 3000, "green");
+                    Materialize.toast(`Successfully deleted user: ${uname}.`, 3000, "green");
                 }
                 else{
-                    Materialize.toast(`Das Löschen des Benutzers: ${uname} war nicht erfolgreich.`, 3000, "red");
+                    Materialize.toast(`Failed to delete user: ${uname}.`, 3000, "red");
                 }
             },
             error(err){
-                Materialize.toast(`Serverfehler`, 3000, "red");
+                Materialize.toast(`Server error!`, 3000, "red");
                 console.log(err);
             }
         });
@@ -120,48 +143,53 @@ function openModal(uname,modal, dirname, filename, id){
     }
 }
 function deleteThis(e,dir, uname){
-    let check = confirm("Wollen Sie den Auftrag wirklich löschen? (Alle Daten werden unwiederruflich gelöscht)");
+    let check = confirm("Do you really want to remove this order? (all data will permanently be deleted)");
     console.log(dir);
     console.log(uname);
     if(check){
         $.ajax({
             url: '/admin/delete?user='+uname+'&file='+dir,
             success(){
-                    Materialize.toast(`Das löschen des Auftrages war erfolgreich.`, 3000, "green");
+                    Materialize.toast(`Order successfully deleted.`, 3000, "green");
                     e.parentElement.parentElement.remove();
             },
         });
     }
 
 }
-$('#changePw').submit(function(e){
-    e.preventDefault();
-   const data = $(this).serializeArray();
-
-   $.post({
-      url: '/admin/changepw',
-      data: data,
-      success(response){
-        switch(response){
-            case 'doesntMatch':
-                Materialize.toast(`Die Passwörter stimmen nicht überein.`, 3000, "red");
-                break;
-            case 'success':
-                Materialize.toast(`Die Änderung des Passwortes war erfolgreich!`, 3000, "green");
-                break;
-            case 'logout':
-                window.location.href = "/logout";
-                break;
-            case 'toShort':
-                Materialize.toast(`Das angegebene Passwort ist zu kurz. Es muss mindestens acht Zeichen lang sein`, 3000, "red");
-                break;
-            default:
-                Materialize.toast(`Serverfehler`, 3000, "red");
-                break;
+function changePassword(i,url) {
+    const data = $(i).serializeArray();
+    $.post({
+        url: url,
+        data: data,
+        success(response) {
+            switch (response) {
+                case 'doesntMatch':
+                    Materialize.toast(`Password mismatch.`, 3000, "red");
+                    break;
+                case 'success':
+                    Materialize.toast(`Password successfully changed`, 3000, "green");
+                    break;
+                case 'logout':
+                    window.location.href = "/logout";
+                    break;
+                case 'toShort':
+                    Materialize.toast(`Password must contain at least 8 characters`, 3000, "red");
+                    break;
+                case "success2":
+                    Materialize.toast(`Password successfully changed. You will be logged out now.`, 3000, "green");
+                    setTimeout(function(){
+                        window.location.href = "/logout";
+                    },3000);
+                    break;
+                default:
+                    Materialize.toast(`Server error!`, 3000, "red");
+                    break;
+            }
+        },
+        error(err) {
+            console.log(err);
         }
-      },
-      error(err){
-          console.log(err);
-      }
-   });
-});
+    });
+    return false;
+}

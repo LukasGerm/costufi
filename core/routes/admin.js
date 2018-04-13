@@ -8,12 +8,12 @@ const async = require("async");
 const rimraf = require('rimraf');
 let settings = require('../../config/settings.json');
 let message = null;
-//todo Nutzer bearbeiten im Adminpanel
-//todo settings
+let lang;
 /* GET users listing. */
 function checkEnding(fileName){
-    if (fileName != 'png' && fileName != 'jpg' && fileName != 'svg' && fileName != 'gif'&& fileName != 'mp4' ){
-        message = "Falscher Dateityp, dies ist leider nicht möglich!";
+
+    if (fileName != 'png' && fileName != 'jpg' && fileName != 'svg' && fileName != 'gif'&& fileName != 'mp4' ) {
+        message = lang.wrongDataType;
         return true;
     }
     else{
@@ -21,6 +21,7 @@ function checkEnding(fileName){
     }
 }
 router.get('/', function(req, res, next) {
+    lang = require("../lang/"+req.session.user.lang+".json");
     const db = req.db;
     const query = "SELECT * FROM users";
     const users = [];
@@ -50,7 +51,8 @@ router.get('/', function(req, res, next) {
                 user: req.session.user,
                 dbUsers: users,
                 message : message,
-                title: settings.title
+                title: settings.title,
+                lang: lang
             });
 
         });
@@ -130,7 +132,7 @@ router.get("/delete", (req,res,next) => {
 router.post('/createassignment', (req,res,next) => {
     console.log(req.files.userData);
     if(req.body.assignment_name == '' || req.files == {}){
-       message = 'Es müssen alle Felder ausgefüllt werden!';
+       message = lang.fillAllFields;
        return res.redirect('/admin');
     }
 
@@ -146,7 +148,6 @@ router.post('/createassignment', (req,res,next) => {
         for(let i = 0; i < req.files.userData.length ; i++){
             fileEnding = req.files.userData[i].name.split('.').pop();
             if (checkEnding(fileEnding)){
-                message = "Falscher Dateityp, dies ist leider nicht möglich!";
                 falseEnding = true;
                 break;
             }
@@ -216,17 +217,19 @@ router.get("/edituser", (req,res,next) => {
                 message: mes,
                 userToEdit: null,
                 title: settings.title,
-                user : req.session.user
+                user : req.session.user,
+                lang: lang
             });
         }
         const user = results[0];
         if(!user){
-            mes = "Dieser Benutzer exestiert nicht!";
+            mes = lang.userDontExist;
             return res.render("edituser", {
                 message: mes,
                 userToEdit: null,
                 title: settings.title,
-                user : req.session.user
+                user : req.session.user,
+                lang: lang
             });
         }
         mes = null;
@@ -234,16 +237,16 @@ router.get("/edituser", (req,res,next) => {
             message: mes,
             userToEdit: user.username,
             title: settings.title,
-            user : req.session.user
+            user : req.session.user,
+            lang: lang
         });
     });
 });
 router.post('/changepw', (req,res,next) => {
-    console.log(req.body);
     if (!(req.body.newPassword === req.body.repeatPassword)){
         return res.send('doesntMatch');
     }
-    if (!(req.body.newPassword.length < 8)){
+    if ((req.body.newPassword.length < 8)){
         return res.send('toShort');
     }
     let encryptedPassword = bcrypt.hashSync(req.body.newPassword);

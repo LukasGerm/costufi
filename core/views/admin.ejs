@@ -12,29 +12,29 @@
             <div class="container">
                 <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="/admin">Home</a></li>
-                        <!-- <li><a href="/settings">Einstellungen</a></li> -->
-                        <li><a href="/files/<%= user.username %>">Nutzeransicht</a></li>
-                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/admin"><%= lang.home %></a></li>
+                        <li><a href="/settings"><%= lang.settings %></a></li>
+                        <li><a href="/files/<%= user.username %>"><%= lang.userPerspective %></a></li>
+                        <li><a href="/logout"><%= lang.logout %></a></li>
                     </ul>
                 </div>
                 <ul id="nav-mobile" class="side-nav">
-                    <li><a href="/files/<%= user.username %>" class="black-text">Home</a></li>
-                    <!--<li><a href="/settings" class="black-text">Einstellungen</a></li> -->
-                    <li><a href="/files/<%= user.username %>" class="black-text">Nutzeransicht</a></li>
-                    <li><a href="/logout" class="black-text">Logout</a></li>
+                    <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.home %></a></li>
+                    <li><a href="/settings" class="black-text"><%= lang.settings %></a></li>
+                    <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.userPerspective %></a></li>
+                    <li><a href="/logout" class="black-text"><%= lang.logout %></a></li>
                 </ul>
                 <a href="#" data-activates="nav-mobile" class="button-collapse white-text left"><i class="material-icons">menu</i></a>
             </div>
         </nav>
         <div class="container">
-            <h4>Willkommen Admin</h4>
+            <h4><%= lang.admin_welcome %></h4>
             <% if(message) {%>
                 <p class="red-text"><%= message %></p>
             <% } %>
             <div class="row">
                 <div class="col s6">
-                    <h5>Nutzererstellung</h5>
+                    <h5><%= lang.create_user %></h5>
                 </div>
             </div>
 
@@ -43,41 +43,41 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <input type="text" id="first_name" name="first_name" class="validate">
-                            <label for="first_name">Vorname</label>
+                            <label for="first_name"><%= lang.first_name %></label>
                         </div>
                         <div class="input-field col s6">
                             <input type="text" id="last_name" name="last_name" class="validate">
-                            <label for="last_name">Name</label>
+                            <label for="last_name"><%= lang.last_name %></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <input type="text" id="username" name="username" class="validate">
-                            <label for="username">Nutzername</label>
+                            <label for="username"><%= lang.username %></label>
                         </div>
                         <div class="input-field col s6">
                             <input type="password" id="password" name="password" class="validate">
-                            <label for="password">Passwort(Mindestens 8 Charaktaere)</label>
+                            <label for="password"><%= lang.password %></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <input type="text" id="email_address" name="email_address" class="validate">
-                            <label for="email_address" data-error="Geben Sie eine richtige E-Mail Adresse an">E-Mail Adresse</label>
+                            <label for="email_address" data-error="<%=  lang.data_error1  %>"><%= lang.customer_email %></label>
                         </div>
                         <div class="input-field col s6">
                             <input type="text" id="costumerid" name="costumerid" class="validate">
-                            <label for="costumerid">Kundennummer</label>
+                            <label for="costumerid"><%= lang.customer_id %></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
                             <input type="checkbox" id="isAdmin" name="isAdmin">
-                            <label for="isAdmin">Admin</label>
+                            <label for="isAdmin"><%= lang.isAdmin %></label>
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn waves-effect waves-light indigo darken-2" type="submit" name="createUser">Erstellen
+                        <button class="btn waves-effect waves-light indigo darken-2" type="submit" name="createUser"><%= lang.sendUser %>
                             <i class="material-icons right">send</i>
                         </button>
 
@@ -86,7 +86,7 @@
                 </form>
             </div>
             <div class="row">
-                <h5>Nutzerdatenverwaltung</h5>
+                <h5><%= lang.manage_user %></h5>
             </div>
             <div class="row">
                 <ul class="collapsible" data-collapsible="accordion">
@@ -96,7 +96,7 @@
                             <div class="right" style="margin: 15px 10px 0 0"><i style="cursor: pointer" class="material-icons" onclick="deleteUser(this, '<%= dbUsers[i].username %>')">clear</i></div>
                             <div class="right" style="margin: 15px 10px 0 0"><i class="material-icons"><a href="/admin/edituser?user=<%= dbUsers[i].username %>">create</a></i></div>
                             <div class="right" style="margin: 15px 10px 0 0"><i style="cursor: pointer" class="material-icons" onclick="openModal('<%= dbUsers[i].username %>','#create_assignment', null,null ,1)">add</i></div>
-                            <div class="collapsible-header"><i class="material-icons">account_circle</i>Kundennummer: <%= dbUsers[i].costumerid %> | Nutzername: <%= dbUsers[i].username %></div>
+                            <div class="collapsible-header"><i class="material-icons">account_circle</i><%= lang.customer_id %>: <%= dbUsers[i].costumerid %> | <%= lang.username %>: <%= dbUsers[i].username %></div>
                             <div class="collapsible-body">
                                 <ul class="collapsible" data-collapsible="accordion">
                                     <% for(let y = 0; y < dbUsers[i].dir.length; y++){ %>
@@ -119,34 +119,34 @@
 
                 <form id="create_assignment_form" action="/admin/createassignment" class="col s12" encType="multipart/form-data" method="POST">
                     <div class="modal-content">
-                        <h5>Auftrag erstellen</h5>
+                        <h5><%= lang.create_assignment %></h5>
                     <div class="row">
                         <div class="input-field col s6">
                             <input type="text" id="assignment_name" name="assignment_name" class="validate">
-                            <label for="assignment_name">Name des Auftrages</label>
+                            <label for="assignment_name"><%= lang.job_name %></label>
                         </div>
                     </div>
-                    <h6>Füge Dateien hinzu</h6>
+                    <h6><%= lang.add_files %></h6>
                     <div class="row">
                         <div class="file-field input-field">
                             <div class="btn waves-effect waves-light indigo darken-2">
-                                <span>Auswählen</span>
+                                <span><%= lang.choose %></span>
                                 <input type="file" multiple name="userData" id="userData">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Lade mehr als eine Datei hoch(jpg,png,svg,gif)">
+                                <input class="file-path validate" type="text" placeholder="<%= lang.placeholder2 %>">
                             </div>
                         </div>
                     </div>
-                    <h6>Rechnung</h6>
+                    <h6><%= lang.bill %></h6>
                     <div class="row">
                         <div class="file-field input-field">
                             <div class="btn waves-effect waves-light indigo darken-2">
-                                <span>Auswählen</span>
+                                <span><%= lang.choose %></span>
                                 <input type="file" name="bill" id="bill">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Rechnung(Nur PDF)">
+                                <input class="file-path validate" type="text" placeholder="<%= lang.placeholder3 %>">
                             </div>
                         </div>
 
@@ -156,8 +156,8 @@
 
             <div class="modal-footer">
 
-                <a href="#!" class="modal-close btn-flat waves-effect waves-blue">Abbrechen</a>
-                <button class="modal-close btn-flat waves-effect waves-blue" type="submit" name="createAssignmentButton">Erstellen</button>
+                <a href="#!" class="modal-close btn-flat waves-effect waves-blue"><%= lang.donot %></a>
+                <button class="modal-close btn-flat waves-effect waves-blue" type="submit" name="createAssignmentButton"><%= lang.sendUser %></button>
             </div>
                 </form>
 

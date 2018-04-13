@@ -10,8 +10,10 @@
   <body>
     <main>
       <div class="background-img"></div>
+      <img src="/images/logo.png" alt="Costufi-Logo" class="responsive-img">
         <div class="container">
-          <div class="z-depth-2 white" style="display: inline-block; padding: 20px 50px 10px 50px; margin-top: 15%;">
+
+          <div class="z-depth-2 white" style="display: inline-block; padding: 20px 50px 10px 50px; margin-top: 2%;">
             <form class="col s12" action="/auth" method="post">
               <div class="row">
                 <h4>Login</h4>
@@ -20,13 +22,13 @@
                 </div>
                 <div class="input-field col s12">
                   <input type="text" name="username" id="username" class="validate">
-                  <label for="username">Nutzername</label>
+                  <label for="username"><%= lang.username %></label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
                   <input type="password" name="password" id="password" class="validate">
-                  <label for="password">Passwort</label>
+                  <label for="password"><%= lang.password_login %></label>
                 </div>
               </div>
               <div class="row">

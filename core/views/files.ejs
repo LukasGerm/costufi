@@ -12,25 +12,25 @@
       <div class="container">
         <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="/files/<%= user.username %>">Home</a></li>
-            <!--<li><a href="/settings">Einstellungen</a></li> -->
+            <li><a href="/files/<%= user.username %>"><%= lang.home %></a></li>
+            <li><a href="/settings"><%= lang.settings %></a></li>
               <% if(user.isAdmin){%>
                 <li>
-                  <a href="/admin"  class="right">Admin</a><br>
+                  <a href="/admin"  class="right"><%= lang.admin %></a><br>
                 </li>
               <% }%>
-            <li><a href="/logout"  class="right">Logout</a></li>
+            <li><a href="/logout"  class="right"><%= lang.logout %></a></li>
           </ul>
         </div>
         <ul id="nav-mobile" class="side-nav">
-          <li><a href="/files/<%= user.username %>" class="black-text">Home</a></li>
-         <!-- <li><a href="/settings" class="black-text">Einstellungen</a></li> -->
+          <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.home %></a></li>
+            <li><a href="/settings" class="black-text"><%= lang.settings %></a></li>
             <% if(user.isAdmin){%>
           <li>
-            <a href="/admin" class="black-text">Admin</a>
+            <a href="/admin" class="black-text"><%= lang.admin %></a>
           </li>
             <% }%>
-          <li><a href="/logout" class="black-text">Logout</a></li>
+          <li><a href="/logout" class="black-text"><%= lang.logout %></a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse white-text left"><i class="material-icons">menu</i></a>
       </div>
@@ -38,7 +38,7 @@
     <div class="container">
       <div class="row">
         <div class="col s6">
-          <h4>Kundendaten</h4>
+          <h4><%= lang.customer_data %></h4>
         </div>
       </div>
       <div class="row">
@@ -46,15 +46,15 @@
           <table class="bordered">
             <tbody>
             <tr>
-              <td>Kundennummer</td>
+              <td><%= lang.customer_id %></td>
               <td><%= user.costumerid %></td>
             </tr>
             <tr>
-              <td>Name</td>
+              <td><%= lang.customer_name %></td>
               <td><%= user.first_name + " " + user.last_name %></td>
             </tr>
             <tr>
-              <td>E-Mail Adresse</td>
+              <td><%= lang.customer_email %></td>
               <td><%= user.email %></td>
             </tr>
             </tbody>
@@ -64,7 +64,7 @@
       </div>
       <div class="row">
         <div class="col s12">
-          <h4>Auftragsdaten</h4>
+          <h4></h4>
         </div>
       </div>
       <div class="row">

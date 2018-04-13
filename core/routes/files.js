@@ -4,16 +4,15 @@ const logger = require('winston');
 const fs = require('fs');
 const path = require('path');
 const async = require('async');
-let settings;
+const settings = require('../../config/settings.json');
 const userDataPath = path.join(__dirname,'..', '..','data', 'userdata');
 const userBillPath = path.join(__dirname, '..','..','data', 'bills');
-//todo eventuell passwortänderung im userinterface
 // no need to check userId with session.user.userId
 // since middleware attached in app.js will guard this route
 // and redirect user to '/'
 
 router.get("/:userName", (req, res, next) => {
-    settings = require('../../config/settings.json');
+    const lang = require("../lang/"+req.session.user.lang+".json");
     const directory = path.join(userDataPath, req.params.userName);
     const files = [];
     const directories = [];
@@ -63,7 +62,8 @@ router.get("/:userName", (req, res, next) => {
                         res.render("files", {
                             directories,
                             user: req.session.user,
-                            title: settings.title
+                            title: settings.title,
+                            lang: lang,
                         });
                     });
             });
