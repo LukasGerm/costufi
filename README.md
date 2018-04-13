@@ -26,12 +26,9 @@ Full documentation is [here](https://github.com/precodeeu/costufi/wiki)
 ### Thanks To
 Julian Missling (Logo)
 
-[Lukas Germerott](https://precode.eu) 
+[Lukas Germerott](https://precode.eu) (Code)
 
-
-(Code)[Lukas Zorn](https://lukaszorn.de) (Advice, Helpfulness)
-
-
+[Lukas Zorn](https://lukaszorn.de) (Advice, Helpfulness)
 ## Licence
 
 [GNU](https://github.com/PreCodeEU/costufi/master/LICENCE)
