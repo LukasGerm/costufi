@@ -11,17 +11,17 @@
         <div class="container">
             <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="/admin">Home</a></li>
-                    <li><a href="/settings">Einstellungen</a></li>
-                    <li><a href="/files/<%= user.username %>">Nutzeransicht</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/admin"><%= lang.home %></a></li>
+                    <li><a href="/settings"><%= lang.settings %></a></li>
+                    <li><a href="/files/<%= user.username %>"><%= lang.userPerspective %></a></li>
+                    <li><a href="/logout"><%= lang.logout %></a></li>
                 </ul>
             </div>
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="/files/<%= user.username %>" class="black-text">Home</a></li>
-                <li><a href="/settings" class="black-text">Einstellungen</a></li>
-                <li><a href="/files/<%= user.username %>" class="black-text">Nutzeransicht</a></li>
-                <li><a href="/logout" class="black-text">Logout</a></li>
+                <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.home %></a></li>
+                <li><a href="/settings" class="black-text"><%= lang.settings %></a></li>
+                <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.userPerspective %></a></li>
+                <li><a href="/logout" class="black-text"><%= lang.logout %></a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse white-text left"><i class="material-icons">menu</i></a>
         </div>
