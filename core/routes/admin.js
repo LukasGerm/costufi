@@ -7,6 +7,8 @@ const path = require("path");
 const async = require("async");
 const rimraf = require('rimraf');
 let settings = require('../../config/settings.json');
+const fileDir = path.join(__dirname, '..', '..', 'data', 'userdata');
+const billDir = path.join(__dirname, '..', '..', 'data', 'bills');
 let message = null;
 let lang;
 /* GET users listing. */
@@ -32,7 +34,7 @@ router.get('/', function(req, res, next) {
             users.push(user);
             user.dir = [];
 
-            fs.readdir(path.join(__dirname,'..', '..','data', 'userdata', user.username), (err, entries) => {
+            fs.readdir(path.join(fileDir, user.username), (err, entries) => {
 
                 if (err) return next(err);
                 user.dir = entries;
@@ -74,8 +76,8 @@ router.post("/createuser", (req,res,next) => {
         //create user in db
         const query = 'INSERT INTO users (costumerid, first_name, last_name,username,password,email,isAdmin) VALUES(?,?,?,?,?,?,?)';
         const fields = [costumerid,first_name,last_name,username,hashedPassword,email_address,isAdmin];
-        const newUserDir = path.join(__dirname, "..",'..','data', "userdata")+"/"+username;
-        const newBillsDir = path.join(__dirname, "..",'..','data', "bills")+"/"+username;
+        const newUserDir = fileDir+"/"+username;
+        const newBillsDir = billDir+"/"+username;
         db.query(query,fields, (err, results) => {
             if(!err){
                 //create path's for Users
@@ -110,8 +112,8 @@ router.get('/deleteuser', (req,res,next) => {
     else{
         db.query(query,fields, (err,results) => {
             if(!err){
-                rimraf(`${__dirname}/../../data/bills/`+req.query.user, () => { console.log("Done") });
-                rimraf(`${__dirname}/../../data/userdata/`+req.query.user, () => { console.log("Done") });
+                rimraf(path.join(billDir,req.query.user), () => { console.log("Done") });
+                rimraf(path.join(fileDir,req.query.user), () => { console.log("Done") });
                 return res.send(true);
 
             }
@@ -121,8 +123,9 @@ router.get('/deleteuser', (req,res,next) => {
 
 });
 router.get("/delete", (req,res,next) => {
-    let deletePath = `${__dirname}/../../data/userdata/`+req.query.user+`/`+req.query.file;
-    let billPath = `${__dirname}/../../data/bills/`+req.query.user+`/`+req.query.file;
+    let deletePath = path.join(fileDir, req.query.user, req.query.file);
+    let billPath = path.join(billDir, req.query.user, req.query.file);
+
 
     rimraf(deletePath, () => {console.log("Done")});
     rimraf(billPath, () => {console.log("Done")});
@@ -130,15 +133,17 @@ router.get("/delete", (req,res,next) => {
     res.send(true);
 });
 router.post('/createassignment', (req,res,next) => {
-    console.log(req.files.userData);
     if(req.body.assignment_name == '' || req.files == {}){
        message = lang.fillAllFields;
        return res.redirect('/admin');
     }
-
+    else if(!(/^[A-Z0-9.-_\s]/.test(req.body.assignment_name))){
+        message = lang.falseJobName;
+        return res.redirect("/admin");
+    }
     let falseEnding = false;
-    let filePath = path.join(__dirname, '..','..','data', 'userdata' , req.body.username,req.body.assignment_name);
-    let billPath = path.join(__dirname, '..','..','data', 'bills', req.body.username,req.body.assignment_name);
+    let filePath = path.join(fileDir, req.body.username,req.body.assignment_name);
+    let billPath = path.join(billDir, req.body.username,req.body.assignment_name);
     let fileEnding;
     let thisFile;
     mkdirp.sync(filePath, err => {

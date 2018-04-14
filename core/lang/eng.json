@@ -50,6 +50,7 @@
   "select_lang" : "Select language",
   "german": "German",
   "english": "English",
-  "change": "Change"
+  "change": "Change",
+  "falseJobName" : "Check the name of the job (A-Z, 0-9, Whitespace, '_')"
 
 }

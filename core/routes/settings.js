@@ -34,17 +34,13 @@ router.post('/changepw', (req,res,next) => {
         return res.send('toShort');
     }
     console.log(req.body.newPassword + " Password");
-    console.log(1);
     let encryptedPassword = bcrypt.hashSync(req.body.newPassword);
-    console.log(2);
-    console.log(encryptedPassword);
     const db = req.db;
     const query = 'UPDATE users SET password = ? WHERE userId = ?';
     const fields = [encryptedPassword, req.session.user.userId];
     db.query(query,fields, (error,results) =>{
         if(error){
             return res.send(false);
-            console.log(error);
         }
         res.send("success2");
     });
@@ -59,7 +55,6 @@ router.post('/changelang', (req,res,next) => {
     const fields = [req.body.lang,req.session.user.userId];
     db.query(query,fields, (error,results) => {
         if(error){
-            console.log(error);
             return res.send(false);
         }
         res.send(true);
