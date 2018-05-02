@@ -1,17 +1,22 @@
-//todo Erst location dann toast
+//Most of this code handles server responses
 let modalOpened = false;
 let imageCount = 0;
+//Submitfunction for the change language form
 $('#changeLanguage').submit(e => {
-   e.preventDefault();
-   const postData = {
-       lang : document.getElementById('select').value
-   };
-    console.log(postData);
+    //DONOT send this before
+    e.preventDefault();
+    //declare the data
+    const postData = {
+           lang : document.getElementById('select').value
+    };
+    //Make an ajax request
     $.post({
       url: "/settings/changelang",
       data: postData,
       success(response){
+          //If there is a response
           if(response){
+              //Just this will get displayed and you will be logged out
               Materialize.toast(`Language is now changed, you will be logged out in a moment.`, 3000, "green");
               setTimeout(function(){
                   window.location.href = "/logout";
