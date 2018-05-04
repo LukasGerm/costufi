@@ -1,31 +1,11 @@
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Nutzer Bearbeiten</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.min.css"  media="screen,projection"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>Edit User</title>
+        <%- include includes/head.ejs %>
     </head>
     <body>
-    <nav class="indigo darken-2 nav">
-        <div class="container">
-            <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="/admin"><%= lang.home %></a></li>
-                    <li><a href="/settings"><%= lang.settings %></a></li>
-                    <li><a href="/files/<%= user.username %>"><%= lang.userPerspective %></a></li>
-                    <li><a href="/logout"><%= lang.logout %></a></li>
-                </ul>
-            </div>
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.home %></a></li>
-                <li><a href="/settings" class="black-text"><%= lang.settings %></a></li>
-                <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.userPerspective %></a></li>
-                <li><a href="/logout" class="black-text"><%= lang.logout %></a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse white-text left"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
+    <%- include includes/navbar.ejs %>
     <div class="container">
         <% if(message){ %>
         <div class="center">
@@ -61,7 +41,5 @@
     </div>
 
     </body>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+    <%- include includes/footer.ejs %>
 </html>
