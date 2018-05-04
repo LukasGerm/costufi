@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+
         <title>Adminpanel</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.min.css"  media="screen,projection"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <%- include ./includes/head.ejs %>
     </head>
     <body>
-        <nav class="indigo darken-2 nav">
-            <div class="container">
-                <div class="nav-wrapper" role="navigation"><a href="#" class="brand-logo"><%= title %></a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="/admin"><%= lang.home %></a></li>
-                        <li><a href="/settings"><%= lang.settings %></a></li>
-                        <li><a href="/files/<%= user.username %>"><%= lang.userPerspective %></a></li>
-                        <li><a href="/logout"><%= lang.logout %></a></li>
-                    </ul>
-                </div>
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.home %></a></li>
-                    <li><a href="/settings" class="black-text"><%= lang.settings %></a></li>
-                    <li><a href="/files/<%= user.username %>" class="black-text"><%= lang.userPerspective %></a></li>
-                    <li><a href="/logout" class="black-text"><%= lang.logout %></a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse white-text left"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
+        <%- include includes/navbar.ejs %>
         <div class="container">
             <h4><%= lang.admin_welcome %></h4>
             <% if(message) {%>
@@ -102,7 +83,7 @@
                                     <% for(let y = 0; y < dbUsers[i].dir.length; y++){ %>
                                     <li added="false" id="<%= dbUsers[i].dir[y] %>" onclick="getFiles(this,'<%= dbUsers[i].username %>')">
                                         <!--<div class="right" style="margin: 15px 10px 0 0"><a href="/files/<%= dbUsers[i].username %>/bills/<%= dbUsers[i].dir[y] %>">Rechnung</a></div> -->
-                                        <div class="right" style="margin: 15px 10px 0 0"><a href="/data/bills/<%=dbUsers[i].username %>/<%= dbUsers[i].dir[y] %>/bill.pdf">Rechnung</a></div>
+                                        <div class="right" style="margin: 15px 10px 0 0"><a href="/data/bills/<%=dbUsers[i].username %>/<%= dbUsers[i].dir[y] %>/bill.pdf"><%= lang.bill %></a></div>
                                         <div class="right" style="margin: 15px 10px 0 0"><i style="cursor: pointer" class="material-icons" onclick="deleteThis(this,'<%= dbUsers[i].dir[y] %>', '<%= dbUsers[i].username %>')">clear</i></div>
                                         <div class="collapsible-header"><%= dbUsers[i].dir[y] %></div>
                                     </li>
@@ -171,8 +152,6 @@
                 <a href="#" class="modal-close btn-flat">Abbrechen</a>
             </div>
         </div>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="/js/materialize.min.js"></script>
-        <script type="text/javascript" src="/js/main.js"></script>
+        <%- include includes/footer.ejs %>
     </body>
 </html>

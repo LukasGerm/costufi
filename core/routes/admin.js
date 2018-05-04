@@ -285,40 +285,11 @@ router.get("/edituser", (req,res,next) => {
         //Render the edituser.ejs with the data
         res.render("edituser", {
             message: mes,
-            userToEdit: user.username,
+            userToEdit: user.userId,
             title: settings.title,
             user : req.session.user,
             lang: lang
         });
-    });
-});
-//Function to change any users password
-//If you are an admin
-router.post('/changepw', (req,res,next) => {
-    //Checks if the password and the repeated password are the same
-    if (!(req.body.newPassword === req.body.repeatPassword)){
-        return res.send('doesntMatch');
-    }
-    //Checks the length of the password
-    if ((req.body.newPassword.length < 8)){
-        return res.send('toShort');
-    }
-    //encrypts the password
-    let encryptedPassword = bcrypt.hashSync(req.body.newPassword);
-    //database out of request context
-    const db = req.db;
-    const query = "UPDATE users SET password = ? WHERE username = ?";
-    const fields= [encryptedPassword, req.body.userName];
-    //changes the password
-    db.query(query,fields, (error,results) => {
-        if(error)
-            //If this is unsuccessful, you will get a message
-            return res.send(false);
-        //if you are changing your own password, you will be logged out in a sec
-        if (req.session.user.username === req.body.userName){
-            return res.send("logout");
-        }
-        res.send("success");
     });
 });
 

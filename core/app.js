@@ -95,6 +95,7 @@ app.use('/',checkIfInstalled, require('./routes/index'));
 app.use('/admin', checkIfLoggedin, checkIfAdmin, require('./routes/admin'));
 app.use('/files', checkIfLoggedin, require('./routes/files'));
 app.use('/settings', checkIfLoggedin, require('./routes/settings'));
+app.use('/changepass', checkIfLoggedin, require('./routes/changepass'));
 
 // catch 404 and forward to error handler
 app.use((error, req, res, next) => {

@@ -23,17 +23,16 @@ router.get('/', (req, res) => {
     const ipv4 = ip.split(', ')[1];
     //now use the geoip we required before to set the country
     let country = geoip.lookup(ipv4).country;
-    switch (country){
-        //I could use an simple if statement, but for more than two languages, I thought a switch might be better.
-        case "DE":
-            //Set the langvar
-            langVar = "ger";
-            break;
-        default:
-            langVar = "eng";
+    langVar = country;
+    //Then try require the right language pack from the languages
+    try {
+        lang = require('../lang/'+langVar+'.json');
     }
-    //Then require the right language pack from the languages
-    lang = require('../lang/'+langVar+'.json');
+    catch(e){
+        langVar = "EN";
+        lang = require('../lang/'+langVar+'.json');
+    }
+
     //If the user is admin, instant redirect to /admin page, if user is not an admin, redirect to userfiles
     if (_.get(req, 'session.user.isAdmin'))
         return res.redirect("/admin");

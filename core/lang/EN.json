@@ -9,6 +9,7 @@
   "customer_name" : "User's Name",
   "customer_email" : "E-Mail Address",
   "job_data" : "Job Data",
+  "bill" : "Invoice",
 
   "admin_welcome" : "Welcome, Admin",
   "create_user" : "Create User",

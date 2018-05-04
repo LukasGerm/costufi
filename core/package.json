@@ -26,6 +26,6 @@
     "mkdirp": "latest",
     "rimraf": "^2.6.2",
     "express-fileupload": "^0.4.0",
-    "geoip-lite" : "latest"
+    "geoip-lite": "latest"
   }
 }
