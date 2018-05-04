@@ -33,31 +33,7 @@ router.get('/', (req,res,next) =>{
            break;
    }
 });
-//router for changing your own password
-router.post('/changepw', (req,res,next) => {
-    //check the new password if it matches the conditions
-    if (!(req.body.newPassword === req.body.repeatPassword)){
-        return res.send('doesntMatch');
-    }
-    if ((req.body.newPassword.length < 8)){
-        return res.send('toShort');
-    }
-    //Encrypt the newly entered password with given function of bcrypt
-    let encryptedPassword = bcrypt.hashSync(req.body.newPassword);
-    //Getting the db out of req context
-    const db = req.db;
-    const query = 'UPDATE users SET password = ? WHERE userId = ?';
-    const fields = [encryptedPassword, req.session.user.userId];
-    db.query(query,fields, (error,results) =>{
-        //If error, abort
-        if(error){
-            return res.send(false);
-        }
-        //Use a switch function in main.js
-        res.send("success2");
-    });
 
-});
 //Router for language changing
 router.post('/changelang', (req,res,next) => {
     //If not set, return

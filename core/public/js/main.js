@@ -162,10 +162,10 @@ function deleteThis(e,dir, uname){
     }
 
 }
-function changePassword(i,url) {
+function changePassword(i) {
     const data = $(i).serializeArray();
     $.post({
-        url: url,
+        url: "/changepass",
         data: data,
         success(response) {
             switch (response) {
