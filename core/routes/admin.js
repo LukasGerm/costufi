@@ -153,7 +153,8 @@ router.get("/delete", (req,res,next) => {
 //Router for creating a job
 router.post('/createassignment', (req,res,next) => {
     //If anything isnt filled
-    if(req.body.assignment_name == '' || req.files == {}){
+    console.log(req.files.bill + "bill");
+    if(req.body.assignment_name == '' || req.files.userData == undefined || req.files.bill == undefined){
        message = lang.fillAllFields;
        return res.redirect('/admin');
     }
