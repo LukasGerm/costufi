@@ -13,7 +13,7 @@
         </div>
         <% } else {%>
         <h3><%= lang.change_password %></h3>
-        <form id="changePw" onsubmit="return changePassword(this, '/admin/changepw')">
+        <form id="changePw" onsubmit="return changePassword(this)">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <input type="password" name="newPassword" id="newPassword" class="validate">
