@@ -2,7 +2,7 @@
   "db" : {
       "host" : "localhost",
       "user" : "costufi",
-      "password" : "costufi123!",
+      "password" : "password",
       "database" : "costufi"
   },
   "installed" : true,
