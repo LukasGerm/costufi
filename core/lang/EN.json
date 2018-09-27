@@ -52,6 +52,6 @@
   "german": "German",
   "english": "English",
   "change": "Change",
-  "falseJobName" : "Check the name of the job (A-Z, 0-9, Whitespace, '_')"
+  "falseJobName" : "Check the name of the job (A-Z, 0-9)"
 
 }

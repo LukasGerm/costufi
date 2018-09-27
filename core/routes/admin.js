@@ -106,7 +106,6 @@ router.post("/createuser", (req,res,next) => {
             }
             else{
                 //If the user is existing, you get a message
-                console.log(err);
                 return res.send("duplicate");
             }
 
@@ -122,7 +121,6 @@ router.get('/deleteuser', (req,res,next) => {
     //If you want to delete yourself, I just made a little security measure. You cannot do this
     if(req.query.user === req.session.user.username){
         res.send(false);
-        console.log("false");
     }
     //If its not yourself, it will be deleted with all its data
     else{
@@ -153,13 +151,12 @@ router.get("/delete", (req,res,next) => {
 //Router for creating a job
 router.post('/createassignment', (req,res,next) => {
     //If anything isnt filled
-    console.log(req.files.bill + "bill");
     if(req.body.assignment_name == '' || req.files.userData == undefined || req.files.bill == undefined){
        message = lang.fillAllFields;
        return res.redirect('/admin');
     }
     //If the jobname isnt correct (like "../Jooob")
-    else if(!(/^[A-Z0-9.-_\s]/.test(req.body.assignment_name))){
+    else if(!(/^[A-Z0-9\s]/.test(req.body.assignment_name))){
         message = lang.falseJobName;
         return res.redirect("/admin");
     }
@@ -169,84 +166,87 @@ router.post('/createassignment', (req,res,next) => {
     let fileEnding;
     let thisFile;
     //make a dir for the job
-    mkdirp.sync(filePath, err => {
-        console.log(err);
-    });
-    //If files is an array
-    if(req.files.userData.length){
-        //For every file in files
-        for(let i = 0; i < req.files.userData.length ; i++){
-            //check the ending
-            fileEnding = req.files.userData[i].name.split('.').pop();
+    mkdirp(filePath, err => {
+        if(err) console.log(err);
+        //If files is an array
+        if(req.files.userData.length){
+            //For every file in files
+            for(let i = 0; i < req.files.userData.length ; i++){
+                //check the ending
+                fileEnding = req.files.userData[i].name.split('.').pop();
+                if (checkEnding(fileEnding)){
+                    falseEnding = true;
+                    //Break if it doenst fit in
+                    break;
+                }
+                else{
+                    //Move this file to the userdata-path
+                    thisFile = req.files.userData[i];
+                    thisFile.mv(path.join(filePath, req.files.userData[i].name), err => {
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            message = null;
+                        }
+                    })
+                }
+            }
+        }
+
+        //If it is a single file
+        else{
+            //Check again if the ending fits
+            fileEnding = req.files.userData.name.split('.').pop();
             if (checkEnding(fileEnding)){
                 falseEnding = true;
-                //Break if it doenst fit in
-                break;
             }
             else{
-                //Move this file to the userdata-path
-                thisFile = req.files.userData[i];
-                thisFile.mv(path.join(filePath, req.files.userData[i].name), err => {
-                    if(err){
+                //Move this file at the right position
+                req.files.userData.mv(path.join(filePath,req.files.userData.name), err =>{
+                    if(err)
                         console.log(err);
-                    }
                     else{
-                        console.log("Uploaded-Pic");
                         message = null;
                     }
-                })
+                });
             }
         }
-    }
-    //If it is a single file
-    else{
-        //Check again if the ending fits
-        fileEnding = req.files.userData.name.split('.').pop();
-        if (checkEnding(fileEnding)){
-            falseEnding = true;
+
+        //The program has to delete
+        //The Folder it recently created
+        //if the ending is false
+        //If you wouldnt do this, you would have a empty folder after unsuccesfully create a job
+        if (falseEnding){
+            rimraf(filePath, err => {
+                if(err)
+                    console.log(err);
+            });
+            return res.redirect('/admin');
         }
         else{
-            //Move this file at the right position
-            req.files.userData.mv(path.join(filePath,req.files.userData.name), err =>{
+            //after this a path for the bill will be created, too
+            mkdirp(billPath, err => {
                 if(err)
                     console.log(err);
                 else{
-                    console.log("Uploaded-Single-Pic");
-                    message = null;
+                    //The bill will be moved to the right position
+                    req.files.bill.mv(path.join(billPath, "bill.pdf"), err => {
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            console.log("Uploaded-Bill");
+                        }
+                    });
+                    //Everything is true, so the message is null and the admin can be redirected to the admin root
                 }
+                message = null;
+                return res.redirect('/admin');
             });
         }
-    }
-    //The program has to delete
-    //The Folder it recently created
-    //if the ending is false
-    //If you wouldnt do this, you would have a empty folder after unsuccesfully create a job
-    if (falseEnding){
-        rimraf(filePath, err => {
-            if(err)
-                console.log(err);
-        });
-        return res.redirect('/admin');
-    }
-    else{
-        //after this a path for the bill will be created, too
-        mkdirp.sync(billPath, err => {
-            if(err)
-                console.log(err);
-        });
-        //The bill will be moved to the right position
-        req.files.bill.mv(path.join(billPath, "bill.pdf"), err => {
-            if(err){
-                console.log(err);
-            }
-            else{
-                console.log("Uploaded-Bill");
-            }
-        });
-        //Everything is true, so the message is null and the admin can be redirected to the admin root
-        message = null;
-        return res.redirect('/admin');
-    }
+    });
+
 });
 //Router for editing a user
 router.get("/edituser", (req,res,next) => {

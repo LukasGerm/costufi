@@ -1,9 +1,9 @@
 {
   "db" : {
-      "host" : "IP",
-      "user" : "DBUSER",
-      "password" : "DBPASSWORD",
-      "database" : "DATABASE"
+      "host" : "localhost",
+      "user" : "costufi",
+      "password" : "costufi123!",
+      "database" : "costufi"
   },
   "installed" : true,
   "version" : "Beta 0.1.2b",

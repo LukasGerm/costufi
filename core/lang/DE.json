@@ -52,7 +52,7 @@
   "german" : "Deutsch",
   "english" : "Englisch",
   "change" : "Ändern",
-  "falseJobName" : "Überprüfe den Namen deines Auftrages (A-Z, 0-9, Whitespace, '_')"
+  "falseJobName" : "Überprüfe den Namen deines Auftrages (A-Z, 0-9)"
 
 
 }

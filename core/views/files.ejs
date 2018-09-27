@@ -43,7 +43,7 @@
             <% for(let i = 0; i < directories.length; i++){ %>
           <li added="false" id="<%= directories[i] %>" onclick="getFiles(this,'<%= user.username %>')">
             <!--<div class="right" style="margin: 15px 10px 0 0"><a href="<%= user.username%>/bills/<%= directories[i] %>">Rechnung</a></div>-->
-            <div class="right" style="margin: 15px 10px 0 0"><a href="/data/bills/<%= user.username %>/<%= directories[i] %>/bill.pdf"><%= lang.bill %></a></div>
+            <div class="right" style="margin: 15px 10px 0 0"><a href="/data/bills/<%= user.username %>/<%= directories[i] %>/bill.pdf" target="_blank"><%= lang.bill %></a></div>
               <div class="collapsible-header"><i class="material-icons">card_travel</i><%= directories[i] %></div>
 
           </li>

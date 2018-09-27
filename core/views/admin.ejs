@@ -83,7 +83,7 @@
                                     <% for(let y = 0; y < dbUsers[i].dir.length; y++){ %>
                                     <li added="false" id="<%= dbUsers[i].dir[y] %>" onclick="getFiles(this,'<%= dbUsers[i].username %>')">
                                         <!--<div class="right" style="margin: 15px 10px 0 0"><a href="/files/<%= dbUsers[i].username %>/bills/<%= dbUsers[i].dir[y] %>">Rechnung</a></div> -->
-                                        <div class="right" style="margin: 15px 10px 0 0"><a href="/data/bills/<%=dbUsers[i].username %>/<%= dbUsers[i].dir[y] %>/bill.pdf"><%= lang.bill %></a></div>
+                                        <div class="right" style="margin: 15px 10px 0 0"><a href="/data/bills/<%=dbUsers[i].username %>/<%= dbUsers[i].dir[y] %>/bill.pdf" target="_blank"><%= lang.bill %></a></div>
                                         <div class="right" style="margin: 15px 10px 0 0"><i style="cursor: pointer" class="material-icons" onclick="deleteThis(this,'<%= dbUsers[i].dir[y] %>', '<%= dbUsers[i].username %>')">clear</i></div>
                                         <div class="collapsible-header"><%= dbUsers[i].dir[y] %></div>
                                     </li>
