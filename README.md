@@ -3,7 +3,7 @@ This documentation is still in work.
 ### Description
 Costufi is a free, Open Source, node.js based application for user management especially for photographers.
 You can easily creat assignments and upload pictures for your customers, so they can look at it and download it.
-At this time, it's only in german, but in one of the next updates I will create an english-language-support.
+At this time, it's available in german and in english.
 ### Installation
 Unstable Version
 I look forward to create an installer, that you don't have to do this.
