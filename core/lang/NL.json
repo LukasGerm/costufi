@@ -37,7 +37,7 @@
   "add_files" : "Bestanden toevoegen",
   "choose" : "Kiezen",
   "placeholder2" : "Afbeeldingen (Alleen PNG, SVG, JPG, GIF, MP4)",
-  "bill" : "Bill",
+  "bill" : "Factuur",
   "placeholder3" : "Factuur kiezen (Alleen PDF)",
   "donot" : "Annuleren",
 
@@ -51,6 +51,7 @@
   "select_lang" : "Taal selecteren",
   "german": "Duits",
   "english": "Engels",
+  "dutch": "Nederlands",
   "change": "Wijzigen",
   "falseJobName" : "Controleer de naam van de taak (A-Z, 0-9, witruimte, '_')"
 
