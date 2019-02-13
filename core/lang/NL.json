@@ -1,0 +1,57 @@
+{
+  "home" : "Home",
+  "admin" : "Admin",
+  "logout" : "Uitloggen",
+  "settings" : "Instellingen",
+  "userPerspective": "Gebruikersperspecfief",
+  "customer_data" : "Gebruikerdata",
+  "customer_id" : "Gebruiker ID",
+  "customer_name" : "Naam van gebruiker",
+  "customer_email" : "E-mailadres",
+  "job_data" : "Taakdata",
+  "bill" : "Factuur",
+
+  "admin_welcome" : "Welkom, Admin",
+  "create_user" : "Gebruiker maken",
+  "manage_user" : "Gebruiker beheren",
+  "first_name" : "Voornaam",
+  "last_name" : "Achternaam",
+  "username" : "Gebruikersnaan",
+  "password_login" : "Wachtwoord",
+  "password" : "Wachtwoord (moet minstens 8 karakters lang zijn)",
+  "isAdmin" : "Moet deze gebruiker administratorrechten hebben?",
+  "sendUser" : "Maken",
+  "data_error1" : "Vul een geldig e-mailadres in",
+
+  "userDontExist" : "De gebruiker bestaat niet!",
+  "wrongDataType" : "Verkeerd datatype, kan actie niet uitvoeren!",
+  "fillAllFields" : "Alle velden moeten ingevuld worden!",
+
+  "tooManyTries" : "Inloggen is te vaak mislukt!",
+  "UorPwrong" : "Verkeerde gebruikersnaam of wachtwoord!",
+  "notAllowed" : "U heeft geen toestemming om deze instelling te gebruiken",
+  "personal" : "Persoonlijke instellingen",
+
+  "create_assignment": "Taak maken",
+  "job_name" : "Taaknaam",
+  "add_files" : "Bestanden toevoegen",
+  "choose" : "Kiezen",
+  "placeholder2" : "Afbeeldingen (Alleen PNG, SVG, JPG, GIF, MP4)",
+  "bill" : "Bill",
+  "placeholder3" : "Factuur kiezen (Alleen PDF)",
+  "donot" : "Annuleren",
+
+  "change_password" : "Wachtwoord wijzigen",
+  "change_lang": "Taal kiezen",
+  "reset": "Resetten",
+
+  "newPassword": "Nieuw wachtwoord",
+  "repeatPassword" : "Herhaal het nieuwe wachtwoord",
+
+  "select_lang" : "Taal selecteren",
+  "german": "Duits",
+  "english": "Engels",
+  "change": "Wijzigen",
+  "falseJobName" : "Controleer de naam van de taak (A-Z, 0-9, witruimte, '_')"
+
+}
